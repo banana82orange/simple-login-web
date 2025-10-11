@@ -12,7 +12,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Load multiple .env files
-const envFiles = ['../.env', '../.env.development' , "../.env.production"]; // order matters
+const envFiles = ['./.env', './.env.development' , "./.env.production"]; // order matters
+
+
 
 envFiles.forEach(file => {
   const envPath = path.resolve(__dirname, file);
@@ -23,7 +25,6 @@ envFiles.forEach(file => {
     console.log(`Loaded config from ${file}`);
   }
 });
-
 const app = express()
 
 app.use(cors())
