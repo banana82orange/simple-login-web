@@ -7,6 +7,10 @@ export default function HomePage() {
           <div>HomePage2</div>
           <div>HomePage3</div>
           <div>HomePag4</div>
-    </div>
+
+      edit something
+
+      <div>HomePage</div>
+   </div>
   )
 }
