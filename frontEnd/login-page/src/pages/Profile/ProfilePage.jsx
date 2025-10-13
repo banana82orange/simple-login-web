@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Button from "../../components/Button.jsx";
 export default function ProfilePage() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
@@ -41,25 +41,12 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 rounded-2xl shadow-md bg-white text-gray-800">
-      <h2 className="text-2xl font-semibold mb-4 text-center">My Profile</h2>
+    <div style={{ maxWidth: "400px", margin: "50px auto", padding: "20px" }}>
+      <div style={{ maxWidth: "400px", margin: "50px auto", padding: "20px" }}>
+      <h2>Welcome, {user.name || "User"} 👋</h2>
+        <Button label="Logout" color="#dc3545" onClick={handleLogout} />
 
-      <div className="mb-3">
-        <strong>Name:</strong> {user.name || "Unknown"}
-      </div>
-      <div className="mb-3">
-        <strong>Email:</strong> {user.email}
-      </div>
-      <div className="mb-3">
-        <strong>Role:</strong> {user.role || "User"}
-      </div>
-
-      <button
-        onClick={handleLogout}
-        className="mt-4 w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition"
-      >
-        Logout
-      </button>
+    </div>
     </div>
   );
 }
