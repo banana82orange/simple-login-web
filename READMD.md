@@ -32,8 +32,8 @@
 ลืมการวุ่นวายกับการติดตั้ง Dependencies หรือการเซ็ต Environment ต่าง ๆ ไปได้เลย! แค่มี Docker ก็พอ
 
 ```bash
-git clone
-cd
+git clone https://github.com/banana82orange/simple-login-web
+cd simple-login-web
 docker compose up --build
 
 ```

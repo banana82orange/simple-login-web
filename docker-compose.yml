@@ -40,7 +40,7 @@ services:
     command: sh -c "npx prisma migrate deploy && npm start"
   app-frontend:
     build:
-      context: ./frontend # Use the current directory for the Dockerfile
+      context: ./front-end # Use the current directory for the Dockerfile
       dockerfile: Dockerfile
     restart: always
     ports:
