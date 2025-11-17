@@ -35,6 +35,8 @@ services:
       - db # Ensure the database starts before the application
     environment:
       DATABASE_URL: ${DATABASE_URL}
+      WB_PORT: ${WB_PORT}
+      SECRET: ${SECRET}
     command: sh -c "npx prisma migrate deploy && npm start"
   app-frontend:
     build:
