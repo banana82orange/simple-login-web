@@ -14,8 +14,6 @@ const __dirname = path.dirname(__filename);
 // Load multiple .env files
 const envFiles = ['./.env', './.env.development' , "./.env.production"]; // order matters
 
-
-
 envFiles.forEach(file => {
   const envPath = path.resolve(__dirname, file);
   const result = dotenv.config({ path: envPath });

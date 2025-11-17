@@ -44,7 +44,7 @@ export default function Navbar() {
     logo: {
       fontSize: '1.5rem',
       fontWeight: 'bold',
-      background: 'linear-gradient(to right, #60a5fa, #a78bfa)',
+      background: 'linear-gradient(to right, #000000ff, #000000ff)',
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
       backgroundClip: 'text',
