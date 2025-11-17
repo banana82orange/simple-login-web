@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+  # 1. PostgreSQL Database Service
+  db:
+    image: postgres:18-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${DATABASE_USER:-user}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-password}
+      POSTGRES_DB: ${DATABASE_NAME:-mydb}
+    ports:
+      - "5432:5432" # Optional: Expose the DB port to the host machine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/ # Persist data
+  pgadmin:
+    image: dpage/pgadmin4:7
+    container_name: test-login_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+  # 2. Node.js Application Service
+  app-backend:
+    build:
+      context: ./server # Use the current directory for the Dockerfile
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "9000:9000" # Expose the application port
+    depends_on:
+      - db # Ensure the database starts before the application
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+    command: sh -c "npx prisma migrate deploy && npm start"
+  app-frontend:
+    build:
+      context: ./frontend # Use the current directory for the Dockerfile
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3000:3000" # Expose the application port
+    depends_on:
+      - app-backend # Ensure the backend starts before the application
+volumes:
+  postgres_data:
